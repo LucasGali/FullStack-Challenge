@@ -1,6 +1,23 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { ToastContainer } from "react-toastify";
+import "../styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import "react-toastify/dist/ReactToastify.css";
+import { Web3ContextProvider } from "../context/Web3Context";
+
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Web3ContextProvider>
+        <Component {...pageProps} />
+        <ToastContainer
+          hideProgressBar
+          position="bottom-right"
+          autoClose={2000}
+        />
+      </Web3ContextProvider>
+    </>
+  );
 }
+
+export default App;
